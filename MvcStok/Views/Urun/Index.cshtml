@@ -1,0 +1,54 @@
+﻿@model List<MvcStok.Models.Entity.Urunler>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<table class="table table-bordered" style="margin-top:50px">
+    <thead>
+        <tr>
+
+            <th>Ürün İd</th>
+            <th>Ürün Adı</th>
+            <th>Marka</th>
+            <th>Ürün Kategori</th>
+            <th>Fiyat</th>
+            <th>Kalan Stok</th>
+            <th>SİL</th>
+            <th>GÜNCELLE</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+        @foreach (var urun in Model)
+        {
+        <tr>
+
+            <td>@urun.İd</td>
+            <td>@urun.UrunAdi</td>
+            <td>@urun.Marka</td>
+            @if (urun.Kategoriler.Status == true)
+            {
+                <td>@urun.Kategoriler.KategoriAdi</td>
+            }
+            else
+            {
+                <td class="alert-danger">(@urun.Kategoriler.KategoriAdi):Silindi</td>
+            }
+            <td>@urun.Fiyat</td>
+            <td>@urun.Stok</td>
+            <td><a href="/Urun/Sil/@urun.İd" class="btn btn-danger">SİL</a></td>
+            <td><a href="/Urun/UrunFormu/@urun.İd" class="btn btn-success">GÜNCELLE</a></td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+<a href="/Urun/Ekle" class="btn btn-primary">YENİ ÜRÜN EKLE</a>
+
+

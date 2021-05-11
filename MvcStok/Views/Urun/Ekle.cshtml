@@ -1,0 +1,32 @@
+﻿@model MvcStok.Models.Entity.Urunler
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ürün Ekle</h2>
+
+@using (Html.BeginForm("Ekle", "Urun", FormMethod.Post, new { @class = "form-group" }))
+{
+    <label>Ürün Adı</label>
+    @Html.TextBoxFor(m => m.UrunAdi, new { @class = "form-control", @required = "" })
+
+
+    <label>Markası</label>
+    @Html.TextBoxFor(m => m.Marka, new { @class = "form-control", @required = "" })
+
+
+    <label>Ürün Kategori</label>
+    @Html.DropDownListFor(m => m.Kategoriler.İd, (List<SelectListItem>)ViewBag.res, new { @class = "form-control" })
+
+    <label>Fiyat</label>
+    @Html.TextBoxFor(m => m.Fiyat, new { @class = "form-control", @required = "" })
+
+
+    <label>Stok Adeti</label>
+    @Html.TextBoxFor(m => m.Stok, new { @class = "form-control", @required = "" })
+
+    <br />
+    <button class="btn btn-info" style="margin-top:15px">Kaydet</button>
+}
+

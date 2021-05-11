@@ -1,0 +1,32 @@
+﻿@model MvcStok.Models.Entity.Urunler
+@{
+    ViewBag.Title = "Ürün Güncelleme Sayfası";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ürün Güncelleme Sayfası</h2>
+
+<br />
+<br />
+@using (Html.BeginForm("Guncelle", "Urun", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.İd)
+    @Html.TextBoxFor(m => m.İd, new { @class = "form-control",@readonly="readonly" })
+    <br />
+    @Html.LabelFor(m => m.UrunAdi)
+    @Html.TextBoxFor(m => m.UrunAdi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.Marka)
+    @Html.TextBoxFor(m => m.Marka, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.KategoriId)
+    @Html.DropDownListFor(m=>m.Kategoriler.İd,(List<SelectListItem>)ViewBag.res, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.Fiyat)
+    @Html.TextBoxFor(m => m.Fiyat, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.Stok)
+    @Html.TextBoxFor(m => m.Stok, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info" style="margin-top:15px">Kaydet</button>
+}

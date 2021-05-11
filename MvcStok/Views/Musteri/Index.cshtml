@@ -1,0 +1,38 @@
+﻿@model List<MvcStok.Models.Entity.Musteriler>
+@{
+    ViewBag.Title = "Müşteri Listesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Müşteri Listesi</h2>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<table class="table table-bordered" style="margin-top:50px">
+    <thead>
+        <tr>
+            <th>Müşteri İd</th>
+            <th>Müşteri Adı</th>
+            <th>Müşteri Soyadı</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+        @foreach (var musteri in Model)
+        {
+            <tr>
+                <td>@musteri.İd</td>
+                <td>@musteri.MusteriAdi</td>
+                <td>@musteri.MusteriSoyad</td>
+                @*<td><a href="/Musteri/Sil/@musteri.İd" class="btn btn-danger">SİL</a></td>*@
+                <td> @Html.ActionLink("Sil", "Sil", new { Id = musteri.İd }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek istediğinizden emin misiniz?')" })</td>
+                <td><a href="/Musteri/MusteriFormu/@musteri.İd" class="btn btn-success">Güncelle</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Musteri/Ekle" class="btn btn-primary">YENİ MÜŞTERİ EKLE</a>
